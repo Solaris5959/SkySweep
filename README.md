@@ -6,6 +6,8 @@ A sweeping data acquisition program designed to present current hotspots of acti
     - Data Processing 
         - PyArrow
         - PySpark
+        - Parquet
+        - DeltaLake
     - NetworkX (Graphs)
 - Scala
 
