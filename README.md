@@ -2,9 +2,12 @@
 A sweeping data acquisition program designed to present current hotspots of activity among publicly traded companies, conglomerates, and ETF members.
 
 ### Tech Stack
-- Python/Scala
-- Some Big Data Library
-- Some AI/ML/DL/RL Library
+- Python
+    - Data Processing 
+        - PyArrow
+        - PySpark
+    - NetworkX (Graphs)
+- Scala
 
 ### To Start VENV
-myenv\Scripts\activate
+venv\Scripts\activate
