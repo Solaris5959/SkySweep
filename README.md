@@ -10,6 +10,7 @@ A sweeping data acquisition program designed to present current hotspots of acti
         - DeltaLake
     - NetworkX (Graphs)
 - Scala
+    - Kafka
 
 ### To Start VENV
 venv\Scripts\activate
