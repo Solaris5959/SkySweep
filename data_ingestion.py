@@ -12,6 +12,7 @@ class rss_article():
     Title: str
     Link: str
     Published: str
+    Content: str = None
     Sentiment: tuple[str, float] = (None, None)
 
 
@@ -43,7 +44,10 @@ def ingest_rss_feed(url, source_name) -> list[rss_article]:
         if hasattr(ssl, '_create_unverified_context'):
             ssl._create_default_https_context = ssl._create_unverified_context
 
+        print ("Attempting to parse feed: ", url)
         feed = feedparser.parse(url)
+        if (url == "https://prlog.org/news/ind/business/rss.xml"):
+            print("Feed: ", feed)
 
         if feed.entries:
             for entry in feed.entries:
@@ -60,27 +64,17 @@ def ingest_rss_feed(url, source_name) -> list[rss_article]:
                     except ValueError:
                         published_date = published
 
-                #print(f"Source: {source_name}")
-                #print(f"Title: {title}")
-                #print(f"Link: {link}")
-                #print(f"Published: {published_date}")
-
-                article_content.append(rss_article(source_name, title, link, published_date))
+                # print(f"Title: {title}")
 
                 # Get article content
                 content = get_article_content(link)
-                if content:
-                    pass
-                    #print("Article Content:")
-                    #print(content[:500] + "..." if len(content) > 500 else content) #Print only the first 500 characters
-                else:
-                    #print("Could not retrieve article content.")
-                    pass
-                #print("-" * 40)
-        else:
-            #print(f"No entries found in {source_name} feed.")
-            pass
+                article_content.append(rss_article(source_name, title, link, published_date, content))
 
+        else:
+            print(f"No entries found in {source_name} feed.")
+
+        for article in article_content:
+            print(article.Title)
         return article_content
 
     except Exception as e:
