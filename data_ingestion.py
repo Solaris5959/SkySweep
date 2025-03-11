@@ -37,6 +37,7 @@ def get_article_content(url):
         print(f"Error parsing article content: {e}")
         return None
 
+# TODO: Add loading display for RSS-Feed Ingestion
 def ingest_rss_feed(url, source_name) -> list[rss_article]:
     article_content: list[rss_article] = []
     """Ingests and parses an RSS feed."""
@@ -64,8 +65,6 @@ def ingest_rss_feed(url, source_name) -> list[rss_article]:
                     except ValueError:
                         published_date = published
 
-                # print(f"Title: {title}")
-
                 # Get article content
                 content = get_article_content(link)
                 article_content.append(rss_article(source_name, title, link, published_date, content))
@@ -84,7 +83,7 @@ def ingest_rss_feed(url, source_name) -> list[rss_article]:
 if __name__ == "__main__":
     feeds = {
         "Yahoo Finance": "https://finance.yahoo.com/news/rssindex/", # Start with just Yahoo Finance as a start
-        "PRLOG": "https://prlog.org/news/ind/business/rss.xml",
+        "PRLOG": "https://prlog.org/news/ind/business/rss.xml", # PRLog is a free RSS feed (multiple topics to choose from), but rate limited
     }
 
     for source, url in feeds.items():
