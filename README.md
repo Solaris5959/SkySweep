@@ -34,5 +34,7 @@ Kafka --> Prometheus --> Grafana (Kafka lag, Spark times, Model inference time)
 Spark --> Prometheus --> Grafana (Batch processing time, failure rate)
 Delta --> Airflow    --> Optimize Delta, Retrain Model
 
+
+- RL/DL/NLP
 ### To Start VENV
 venv\Scripts\activate
