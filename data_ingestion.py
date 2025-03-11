@@ -13,7 +13,7 @@ class rss_article():
     Link: str
     Published: str
     Sentiment: tuple[str, float] = (None, None)
-    
+
 
 def get_article_content(url):
     """Retrieves and parses the content of an article."""
@@ -64,7 +64,7 @@ def ingest_rss_feed(url, source_name) -> list[rss_article]:
                 #print(f"Title: {title}")
                 #print(f"Link: {link}")
                 #print(f"Published: {published_date}")
-                
+
                 article_content.append(rss_article(source_name, title, link, published_date))
 
                 # Get article content
@@ -80,7 +80,7 @@ def ingest_rss_feed(url, source_name) -> list[rss_article]:
         else:
             #print(f"No entries found in {source_name} feed.")
             pass
-            
+
         return article_content
 
     except Exception as e:
@@ -90,6 +90,7 @@ def ingest_rss_feed(url, source_name) -> list[rss_article]:
 if __name__ == "__main__":
     feeds = {
         "Yahoo Finance": "https://finance.yahoo.com/news/rssindex/", # Start with just Yahoo Finance as a start
+        "PRLOG": "https://prlog.org/news/ind/business/rss.xml",
     }
 
     for source, url in feeds.items():
