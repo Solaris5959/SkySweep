@@ -9,5 +9,7 @@ A sweeping data acquisition program designed to present current hotspots of acti
     - NetworkX (Graphs)
 - Scala
 
+
+- RL/DL/NLP
 ### To Start VENV
 venv\Scripts\activate
