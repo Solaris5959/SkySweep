@@ -12,5 +12,7 @@ A sweeping data acquisition program designed to present current hotspots of acti
 - Scala
     - Kafka
 
+
+- RL/DL/NLP
 ### To Start VENV
 venv\Scripts\activate
