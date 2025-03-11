@@ -4,13 +4,35 @@ A sweeping data acquisition program designed to present current hotspots of acti
 ### Tech Stack
 - Python
     - Data Processing 
-        - PyArrow
-        - PySpark
-        - Parquet
-        - DeltaLake
+        - PyArrow (In-memory Format)
+        - PySpark (Data Processing)
+        - DeltaLake (Durable Format [Parquet])
+        - Hive (Query Layer)
+        - Airflow (Orchestration)
     - NetworkX (Graphs)
 - Scala
-    - Kafka
+    - Kafka (Real time Streaming)
+
+- Monitoring
+    - Prometheus -> Grafana
+
+#### ML Inference Line
+Kafka --> Spark (Arrow In-Memory) --> ML Model (Direct Predictions)
+                ↘
+             Prometheus --> Grafana (Real-Time Monitoring)
+
+
+#### Historical Data Line
+Kafka --> Spark (Batch) --> Delta Lake (Parquet + ACID)
+                            ↘
+                     Hive Metastore
+                            ↘
+                    Batch ML Retraining
+
+#### Telemetry Line
+Kafka --> Prometheus --> Grafana (Kafka lag, Spark times, Model inference time)
+Spark --> Prometheus --> Grafana (Batch processing time, failure rate)
+Delta --> Airflow    --> Optimize Delta, Retrain Model
 
 
 - RL/DL/NLP
