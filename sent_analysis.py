@@ -56,7 +56,7 @@ if __name__ == "__main__":
         "PRLog": "https://prlog.org/news/ind/business/rss.xml",
     }
 
-    sent = ModelAnalysis("dbmdz/bert-large-cased-finetuned-conll03-english", NER_TASK)
+    sent = ModelAnalysis("dbmdz/bert-large-cased-finetuned-conll03-english", TEXT_TASK)
 
     for source, url in feeds.items():
         articles = ingest_rss_feed(url, source)
