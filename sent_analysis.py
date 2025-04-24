@@ -8,6 +8,14 @@ import yfinance as yf
 from data_ingestion import ingest_rss_feed, RSSArticle
 #import pandas as pd
 
+# ANSI color codes for colored terminal output
+RED = '\033[91m'
+GREEN = '\033[92m'
+YELLOW = '\033[93m'
+MAGENTA = '\033[95m'
+CYAN = '\033[96m'
+RESET = '\033[0m'
+
 MODEL = "yiyanghkust/finbert-tone"
 TEXT_TASK = "text-classification"
 NER_TASK = "ner"
@@ -60,4 +68,7 @@ if __name__ == "__main__":
 
     for source, url in feeds.items():
         articles = ingest_rss_feed(url, source)
-        sent.run(articles)
+        if articles:
+            sent.run(articles)
+        else:
+            print(f"{RED}No articles found for {source}{RESET}")
